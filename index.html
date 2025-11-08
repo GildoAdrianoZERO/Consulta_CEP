@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEP Fácil - Consulta Rápida</title>
+    <link rel="shortcut icon" href="src/mapa.png" type="image/x-icon">
+    <link rel="stylesheet " type="text/css" href="style.css" media="screen"></link>
+
+</head>
+<body>
+    <div class="container">
+        <h1>CEP Fácil</h1>
+        <p>Consulte um endereço digitando o CEP abaixo:</p>
+
+        <div class="form-group">
+            <input type="text" id="cepInput" maxlength="8" placeholder="Digite 8 dígitos do CEP">
+            <button id="buscarBtn">Buscar</button>
+        </div>
+
+        <div id="resultado" class="resultado-box hidden">
+            <h2>Detalhes do Endereço</h2>
+            <table>
+                <tr>
+                    <td>Logradouro:</td>
+                    <td id="logradouro"></td>
+                </tr>
+                <tr>
+                    <td>Bairro:</td>
+                    <td id="bairro"></td>
+                </tr>
+                <tr>
+                    <td>Cidade/UF:</td>
+                    <td id="cidadeUf"></td>
+                </tr>
+            </table>
+        </div>
+        
+        <p id="mensagemErro" class="mensagem-erro"></p>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
