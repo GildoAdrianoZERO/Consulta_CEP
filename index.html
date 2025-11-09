@@ -3,23 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEP Fácil - Consulta Rápida</title>
-    <link rel="shortcut icon" href="src/mapa.png" type="image/x-icon">
-    <link rel="stylesheet " type="text/css" href="style.css" media="screen"></link>
-
+    <title>CEP Fácil - Consulta de Frete</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
 </head>
 <body>
     <div class="container">
-        <h1>CEP Fácil</h1>
-        <p>Consulte um endereço digitando o CEP abaixo:</p>
 
-        <div class="form-group">
-            <input type="text" id="cepInput" maxlength="8" placeholder="Digite 8 dígitos do CEP">
+        <div class="header-busca">
+            <i class="fas fa-map-marker-alt map-icon"></i>
+            <h1>CEP Fácil</h1>
+            <p>Encontre a localização e calcule o frete por CEP ou Cidade.</p>
+        </div>
+
+        <div class="busca-card">
+            <h2><i class="fas fa-search search-icon"></i> Digite o CEP ou Cidade</h2>
+            
+            <input type="text" id="cepInput" placeholder="Ex: 50000-000 ou Recife">
+            
+            <p class="info-message">Digite o CEP ou a Cidade de entrega.</p>
+            
             <button id="buscarBtn">Buscar</button>
         </div>
 
         <div id="resultado" class="resultado-box hidden">
-            <h2>Detalhes do Endereço</h2>
+            <h2>Detalhes da Entrega</h2>
             <table>
                 <tr>
                     <td>Logradouro:</td>
@@ -33,6 +41,10 @@
                     <td>Cidade/UF:</td>
                     <td id="cidadeUf"></td>
                 </tr>
+                <tr>
+                    <td>Valor do Frete:</td>
+                    <td id="valorFrete"></td>
+                </tr>
             </table>
         </div>
         
@@ -40,6 +52,5 @@
     </div>
 
     <script src="script.js"></script>
-
 </body>
 </html>
