@@ -10,7 +10,7 @@
     --surface-color: #ffffff; 
     --text-color: #343a40; 
     --border-color: #ced4da; 
-    --shadow-subtle: 0 4px 8px rgba(0, 0, 0, 0.05); /* Sombra mais sutil */
+    --shadow-subtle: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 body {
@@ -18,7 +18,7 @@ body {
     background-color: var(--background-light);
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Alinha no topo, como na imagem */
+    align-items: flex-start;
     min-height: 100vh;
     margin: 0;
     padding: 20px;
@@ -32,7 +32,7 @@ body {
     width: 100%;
     max-width: 480px; 
     text-align: center;
-    margin-top: 5vh; /* Desce um pouco o container principal */
+    margin-top: 5vh;
 }
 
 /* Estilo do cabeçalho da imagem (Icone e Título) */
@@ -54,12 +54,12 @@ h1 {
 }
 
 p {
-    color: #6c757d; /* Cor mais suave para o texto descritivo */
+    color: #6c757d;
     font-size: 0.95em;
     margin: 10px 0 25px 0;
 }
 
-/* Área de Busca (Simulando o card da imagem) */
+/* Área de Busca (Card) */
 .busca-card {
     background-color: var(--surface-color);
     border-radius: 12px;
@@ -87,7 +87,7 @@ p {
     font-size: 16px;
     outline: none;
     transition: border-color 0.3s, box-shadow 0.3s;
-    box-sizing: border-box; /* Garante que padding não afete a largura total */
+    box-sizing: border-box;
 }
 
 #cepInput:focus {
@@ -99,7 +99,7 @@ p {
 #buscarBtn {
     width: 100%;
     padding: 14px 20px;
-    background-color: var(--primary-color); /* Usamos a cor primária para o botão */
+    background-color: var(--primary-color);
     color: white;
     border: none;
     border-radius: 8px;
@@ -114,7 +114,7 @@ p {
     background-color: #0056b3;
 }
 
-/* Ícone de lupa e mensagem de info (para simular o design) */
+/* Ícone de lupa e mensagem de info */
 .search-icon {
     margin-right: 8px;
     color: var(--text-color);
@@ -126,7 +126,7 @@ p {
     margin-top: 10px;
 }
 
-/* Área de Resultados (Mantida, mas ajustada) */
+/* Área de Resultados */
 .resultado-box {
     margin-top: 30px;
     padding: 25px;

@@ -1,3 +1,7 @@
+// ====================================
+// === JAVASCRIPT COM LÓGICA DE BUSCA UNIFICADA E CORREÇÕES ===
+// ====================================
+
 // 1. VARIÁVEIS DE ELEMENTOS (DOM)
 const cepInput = document.getElementById('cepInput');
 const buscarBtn = document.getElementById('buscarBtn');
@@ -10,51 +14,51 @@ const bairro = document.getElementById('bairro');
 const cidadeUf = document.getElementById('cidadeUf');
 const valorFrete = document.getElementById('valorFrete'); 
 
-// 2. TABELA DE FRETE
+// 2. TABELA DE DADOS ESPECÍFICA (Sua tabela de fretes para PE, sem acentos e em MAIÚSCULAS)
 const tabelaDeFrete = {
     'PE': {
         'RECIFE': 100.00,
         'OLINDA': 100.00,
         'JABOATÃO DOS GUARARAPES': 100.00,
         'CAMARAGIBE': 100.00,
-        'SÃO LOURENÇO DA MATA': 100.00,
+        'SAO LOURENCO DA MATA': 100.00,
         'CABO DE SANTO AGOSTINHO': 160.00,
         'PAULISTA': 100.00,
         'IPOJUCA': 200.00,
         'ABREU E LIMA': 100.00,
         'MORENO': 145.00,
         'IGARASSU': 160.00,
-        'ARAÇOIABA': 250.00,
+        'ARACOIABA': 250.00,
         'ITAPISSUMA': 175.00,
-        'ILHA DE ITAMARACÁ': 200.00,
-        'ALIANÇA': 300.00,
+        'ILHA DE ITAMARACA': 200.00,
+        'ALIANCA': 300.00,
         'BUENOS AIRES': 250.00,
         'CAMUTANGA': 360.00,
         'CARPINA': 200.00,
         'CONDADO': 300.00,
         'FERREIROS': 350.00,
         'GOIANA': 200.00,
-        'ITAMBÉ': 280.00,
+        'ITAMBE': 280.00,
         'ITAQUITINGA': 270.00,
         'LAGOA DO ITAENGA': 210.00,
         'LAGOA DO CARRO': 210.00,
         'MACAPARANA': 375.00,
-        'NAZARÉ DA MATA': 215.00,
+        'NAZARE DA MATA': 215.00,
         'PAUDALHO': 190.00,
-        'TIMBAÚBA': 315.00,
-        'TRACUNHAÉM': 210.00,
-        'VICÊNCIA': 275.00,
-        'CHÃ DE ALEGRIA': 195.00,
-        'CHÃ GRANDE': 260.00,
-        'GLÓRIA DO GOITÁ': 210.00,
+        'TIMBAUBA': 315.00,
+        'TRACUNHAEM': 210.00,
+        'VICENCIA': 275.00,
+        'CHA DE ALEGRIA': 195.00,
+        'CHA GRANDE': 260.00,
+        'GLORIA DO GOITA': 210.00,
         'POMBOS': 215.00,
-        'VITÓRIA DE SANTO ANTÃO': 200.00,
-        'ÁGUA PRETA': 400.00,
+        'VITORIA DE SANTO ANTAO': 200.00,
+        'AGUA PRETA': 400.00,
         'AMARAJI': 325.00,
         'BARREIROS': 340.00,
-        'BELÉM DE MARIA': 500.00,
+        'BELEM DE MARIA': 500.00,
         'CATENDE': 440.00,
-        'CORTÊS': 340.00,
+        'CORTES': 340.00,
         'ESCADA': 200.00,
         'GAMELEIRA': 300.00,
         'JAQUEIRA': 465.00,
@@ -62,17 +66,17 @@ const tabelaDeFrete = {
         'MARAIAL': 490.00,
         'PALMARES': 385.00,
         'PRIMAVERA': 265.00,
-        'QUIPAPÁ': 570.00,
-        'RIBEIRÃO': 270.00,
+        'QUIPAPA': 570.00,
+        'RIBEIRAO': 270.00,
         'RIO FORMOSO': 290.00,
-        'SÃO BENEDITO DO SUL': 550.00,
-        'SÃO JOSÉ DA COROA GRANDE': 370.00,
-        'SIRINHAÉM': 260.00,
-        'TAMANDARÉ': 330.00,
-        'XEXÉU': 430.00,
-        'ÁGUAS BELAS': 970.00,
-        'BUÍQUE': 870.00,
-        'ITAÍBA': 1030.00,
+        'SAO BENEDITO DO SUL': 550.00,
+        'SAO JOSE DA COROA GRANDE': 370.00,
+        'SIRINHAEM': 260.00,
+        'TAMANDARE': 330.00,
+        'XEXEU': 430.00,
+        'AGUAS BELAS': 970.00,
+        'BUIQUE': 870.00,
+        'ITAIBA': 1030.00,
         'PEDRA': 800.00,
         'TUPANATINGA': 950.00,
         'VENTUROSA': 760.00,
@@ -83,34 +87,34 @@ const tabelaDeFrete = {
         'CACHOEIRINHA': 540.00,
         'CAPOEIRAS': 740.00,
         'CARUARU': 425.00,
-        'GRAVATÁ': 275.00,
-        'JATAÚBA': 710.00,
+        'GRAVATA': 275.00,
+        'JATAUBA': 710.00,
         'PESQUEIRA': 670.00,
-        'POÇÃO': 740.00,
+        'POCAO': 740.00,
         'RIACHO DAS ALMAS': 420.00,
-        'SANHARÓ': 620.00,
-        'SÃO BENTO DO UNA': 640.00,
-        'SÃO CAITANO': 470.00,
-        'TACAIMBÓ': 520.00,
+        'SANHARO': 620.00,
+        'SAO BENTO DO UNA': 640.00,
+        'SAO CAITANO': 470.00,
+        'TACAIMBO': 520.00,
         'CASINHAS': 400.00,
         'FREI MIGUELINHO': 460.00,
         'SANTA CRUZ DO CAPIBARIBE': 595.00,
-        'SANTA MARIA DO CAMBUCÁ': 430.00,
+        'SANTA MARIA DO CAMBUCA': 430.00,
         'SURUBIM': 380.00,
         'TAQUARITINGA DO NORTE': 610.00,
         'TORITAMA': 530.00,
-        'VERTENTE DO LÉRIO': 430.00,
+        'VERTENTE DO LERIO': 430.00,
         'VERTENTES': 580.00,
         'BOM JARDIM': 310.00,
         'CUMARU': 380.00,
         'FEIRA NOVA': 250.00,
-        'JOÃO ALFREDO': 330.00,
+        'JOAO ALFREDO': 330.00,
         'LIMOEIRO': 275.00,
         'MACHADOS': 360.00,
-        'OROBÓ': 330.00,
+        'OROBO': 330.00,
         'PASSIRA': 345.00,
         'SALGADINHO': 360.00,
-        'SÃO VICENTE FÉRRER': 360.00
+        'SAO VICENTE FERRER': 360.00
     },
     'NAO_ENTREGA': 'Não Entregamos nesta região'
 };
@@ -127,28 +131,30 @@ function limparResultados(){
 }
 
 function calcularFrete(uf, cidade) {
-    // Se o CEP for de outro estado, a ViaCEP retorna a UF. Bloqueamos imediatamente.
+    // 1. Bloqueia imediatamente estados que não são PE
     if (uf.toUpperCase() !== 'PE') {
         return tabelaDeFrete['NAO_ENTREGA'];
     }
 
-    // Padroniza a cidade para busca (sem acentos, maiúscula, sem espaços extras)
+    // 2. Padroniza a cidade para a busca: remove acentos, espaços extras e coloca em MAIÚSCULAS
     const cidadeFormatada = cidade
         .normalize('NFD').replace(/[\u0300-\u036f]/g, "")
         .trim().toUpperCase();
 
     const fretesPE = tabelaDeFrete['PE'];
 
-    // Tenta encontrar o valor exato na lista.
+    // 3. Tenta encontrar o valor exato na lista.
     if (fretesPE[cidadeFormatada] !== undefined) {
         return fretesPE[cidadeFormatada];
     }
     
-    // Se a cidade não foi encontrada na lista de PE
+    // 4. Se a cidade de PE não foi encontrada na lista (não atendida)
     return tabelaDeFrete['NAO_ENTREGA'];
 }
 
 function exibirResultado(data){
+    // Se a busca foi por CEP, os campos de endereço são reais.
+    // Se foi por cidade, usamos a mensagem 'N/A'.
     logradouro.textContent = data.logradouro || 'N/A (Busca por Cidade)';
     bairro.textContent = data.bairro || 'N/A (Busca por Cidade)';
     cidadeUf.textContent = `${data.localidade} - ${data.uf}`;
@@ -156,8 +162,10 @@ function exibirResultado(data){
     const frete = calcularFrete(data.uf, data.localidade); 
 
     if (typeof frete === 'number') {
+        // Formata o número como moeda brasileira (R$)
         valorFrete.textContent = frete.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     } else {
+        // Exibe a mensagem de 'Não Entregamos...'
         valorFrete.textContent = frete;
     }
 
@@ -179,6 +187,7 @@ async function buscarPorCEP(cep) {
             mensagemErro.textContent = `CEP ${cep} não encontrado.`;
             limparResultados();
         } else {
+            // Se o CEP foi encontrado, o cálculo de frete é feito dentro do exibirResultado
             exibirResultado(data);
         }
     } catch (error) {
@@ -188,21 +197,20 @@ async function buscarPorCEP(cep) {
     }
 }
 
-// Função de busca por Cidade 
+// Função de busca por Cidade (direta)
 function buscarPorCidade(termo) {
+    // Foca apenas no nome da cidade, ignora qualquer UF que o usuário tenha digitado
     const cidade = termo
-        .split(/,\s*|\s*-\s*/) // Divide por vírgula ou hífen (se existir)
-        .map(p => p.trim())[0]; // Pega apenas a primeira parte (a cidade)
+        .split(/,\s*|\s*-\s*/) 
+        .map(p => p.trim())[0];
 
     if (cidade.length < 3) {
         mensagemErro.textContent = 'Por favor, digite o nome completo da Cidade (Ex: Recife).';
         return;
     }
 
-    // 2. Define o estado fixo para Pernambuco (PE)
     const uf = 'PE'; 
 
-    // Simula o objeto de retorno da API
     const dadosSimulados = {
         localidade: cidade,
         uf: uf,
@@ -210,16 +218,15 @@ function buscarPorCidade(termo) {
         bairro: null
     };
     
-    // 3. Verifica se a cidade é PE, mas não está na nossa lista de fretes
+    // Tenta calcular o frete
     const frete = calcularFrete(uf, cidade);
     
+    // 5. CORREÇÃO: Chamamos exibirResultado em qualquer caso para atualizar a tela
+    exibirResultado(dadosSimulados);
+    
+    // Se o frete é a mensagem de "NÃO_ENTREGA", exibe a mensagem de erro no topo
     if (frete === tabelaDeFrete['NAO_ENTREGA']) {
-        // Se a cidade não estiver na lista de PE, trata como não atendida
         mensagemErro.textContent = `A cidade "${cidade}" (PE) não está na nossa área de cobertura.`;
-        limparResultados();
-    } else {
-        // Passamos os dados diretamente para o cálculo e exibição do frete
-        exibirResultado(dadosSimulados);
     }
 }
 
@@ -240,7 +247,7 @@ function buscarUnificado() {
     if (cepLimpo.length === 8) {
         buscarPorCEP(cepLimpo);
     } 
-    // Se não é um CEP válido, trata como busca por Cidade/Estado
+    // Se não é um CEP válido, trata como busca por Cidade
     else {
         buscarPorCidade(termoBruto);
     }
