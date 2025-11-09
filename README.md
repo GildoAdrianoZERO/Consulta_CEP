@@ -56,6 +56,5 @@ Este é um projeto **Front-end puro**, o que garante a máxima velocidade e port
 
 ## 🧑‍💻 Autor
 
-Feito com 💙 por **[Seu Nome/Usuário do GitHub]**
+Feito com 💙 por **[Gildo Norberto (ZERO)]**
 
-*(Lembre-se de substituir o placeholder do autor pelo seu nome ou usuário.)*
