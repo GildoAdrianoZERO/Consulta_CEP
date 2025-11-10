@@ -1,7 +1,3 @@
-// ====================================
-// === JAVASCRIPT COM LÓGICA DE BUSCA UNIFICADA E CORREÇÕES ===
-// ====================================
-
 // 1. VARIÁVEIS DE ELEMENTOS (DOM)
 const cepInput = document.getElementById('cepInput');
 const buscarBtn = document.getElementById('buscarBtn');
@@ -19,7 +15,7 @@ const tabelaDeFrete = {
     'PE': {
         'RECIFE': 100.00,
         'OLINDA': 100.00,
-        'JABOATÃO DOS GUARARAPES': 100.00,
+        'JABOATAO DOS GUARARAPES': 100.00,
         'CAMARAGIBE': 100.00,
         'SAO LOURENCO DA MATA': 100.00,
         'CABO DE SANTO AGOSTINHO': 160.00,
