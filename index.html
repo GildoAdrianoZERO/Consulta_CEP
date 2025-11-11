@@ -1,56 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEP Fácil - Consulta de Frete</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
-    </head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CEP Fácil - Consulta de Frete</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+</head>
 <body>
-    <div class="container">
-
-        <div class="header-busca">
-            <i class="fas fa-map-marker-alt map-icon"></i>
-            <h1>CEP Fácil</h1>
-            <p>Encontre a localização e calcule o frete por CEP ou Cidade.</p>
-        </div>
-
-        <div class="busca-card">
-            <h2><i class="fas fa-search search-icon"></i> Digite o CEP ou Cidade</h2>
-            
-            <input type="text" id="cepInput" placeholder="Ex: 50000-000 ou Recife">
-            
-            <p class="info-message">Digite o CEP ou a Cidade de entrega em Pernambuco (PE).</p>
-            
-            <button id="buscarBtn">BUSCAR</button>
-        </div>
-
-        <div id="resultado" class="resultado-box hidden">
-            <h2>Detalhes da Entrega</h2>
-            <table>
-                <tr>
-                    <td>Logradouro:</td>
-                    <td id="logradouro"></td>
-                </tr>
-                <tr>
-                    <td>Bairro:</td>
-                    <td id="bairro"></td>
-                </tr>
-                <tr>
-                    <td>Cidade/UF:</td>
-                    <td id="cidadeUf"></td>
-                </tr>
-                <tr>
-                    <td>Valor do Frete:</td>
-                    <td id="valorFrete"></td>
-                </tr>
-            </table>
-        </div>
-        
-        <p id="mensagemErro" class="mensagem-erro"></p>
+  <div class="container">
+    <div class="header-busca">
+      <i class="fas fa-map-marker-alt map-icon"></i>
+      <h1>CEP Fácil</h1>
+      <p>Encontre a localização e calcule o frete por CEP ou Cidade.</p>
     </div>
 
-    <script src="script.js"></script>
+    <div class="busca-card">
+      <h2><i class="fas fa-search search-icon"></i> Digite o CEP ou Cidade</h2>
+
+      <div class="input-wrap">
+        <input
+          type="text"
+          id="cepInput"
+          placeholder="Ex: 50000-000 ou Recife"
+          inputmode="text"
+          autocomplete="postal-code"
+          aria-autocomplete="list"
+          aria-expanded="false"
+          aria-owns="suggestions"
+        />
+        <div id="suggestions" class="suggestions hidden" role="listbox" aria-label="Sugestões de cidades"></div>
+      </div>
+
+      <p class="info-message">Digite o CEP ou a Cidade de entrega em Pernambuco (PE). Experimente: <em>santa</em>.</p>
+      <button id="buscarBtn">BUSCAR</button>
+      <p id="mensagemErro" class="mensagem-erro" aria-live="polite"></p>
+    </div>
+
+    <div id="resultado" class="resultado-box hidden" aria-live="polite">
+      <h2>Detalhes da Entrega</h2>
+      <table>
+        <tr><td>Logradouro:</td><td id="logradouro"></td></tr>
+        <tr><td>Bairro:</td><td id="bairro"></td></tr>
+        <tr><td>Cidade/UF:</td><td id="cidadeUf"></td></tr>
+        <tr><td>Valor do Frete:</td><td id="valorFrete"></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
